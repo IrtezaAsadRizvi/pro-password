@@ -1,0 +1,85 @@
+.wrapper {}
+
+/* filled gradient up to --fill%, rest is --track-rest */
+.range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 9999px;
+    outline: none;
+    background:
+        linear-gradient(to right, #919191, #616161) 0 / var(--fill, 0%) 100% no-repeat,
+        var(--track-rest, #e4e4e7);
+}
+
+/* --- WebKit (Chromium/Safari) --- */
+.range::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: 9999px;
+    background: transparent;
+}
+
+/* thumb with the same gradient */
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #c766fc, #575cfa);
+    border: 3px solid white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+    margin-top: -5px;
+    /* center on 8px track */
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+    cursor: pointer;
+}
+
+.range:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+.range:active::-webkit-slider-thumb {
+    transform: scale(1.3);
+}
+
+.range:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px rgba(87, 92, 250, .28);
+}
+
+/* --- Firefox --- */
+.range::-moz-range-track {
+    height: 8px;
+    border-radius: 9999px;
+    background: var(--track-rest, #e4e4e7);
+}
+
+.range::-moz-range-progress {
+    height: 8px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #e1e1e1, #d1d1d1);
+}
+
+.range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    /* background: linear-gradient(135deg, #c766fc, #575cfa); */
+    background: #c666fc;
+    border: 3px solid white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+
+
+.range:active::-moz-range-thumb {
+    transform: scale(1.2);
+}
+
+.range:hover::-moz-range-thumb {
+    transform: scale(1.2);
+}
+
+.range:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 3px rgba(87, 92, 250, .28);
+}
