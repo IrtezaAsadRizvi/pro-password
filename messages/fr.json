@@ -1,15 +1,23 @@
 {
-    "HomePage": {
-        "helloWorld": "Bonjour tout le monde !"
-    },
-    "AboutPage": {
-        "aboutText": "Ceci est un site statique complètement traduit."
-    },
     "Header": {
-        "home": "Accueil",
-        "about": "A propos"
+        "select_language": "Sélectionner la langue",
+        "toggle_darkmode": "Activer/désactiver le mode sombre"
     },
-    "LocaleSwitcher": {
-        "locale": "{locale, select, fr {français} en {anglais} other {inconnu}}"
+    "Tool": {
+        "uppercase_letters": "Majuscules",
+        "lowercase_letters": "Minuscules",
+        "numbers": "Nombres",
+        "symbols": "Symboles",
+        "character_length": "Longueur des caractères",
+        "strength": "Force",
+        "too_weak": "Trop faible !",
+        "weak": "Faible",
+        "medium": "Moyen",
+        "strong": "Fort",
+        "none": "None",
+        "generate": "Générer",
+        "refresh_password": "Actualiser le mot de passe",
+        "copy_password": "Copier le mot de passe",
+        "click_copy_password": "Cliquer pour copier le mot de passe"
     }
 }

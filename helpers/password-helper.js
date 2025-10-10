@@ -56,7 +56,7 @@ function hasRepeatedBlocks(pw) {
 }
 
 export function evalPassword(pw) {
-    if (!pw) return { bars: 0, label: 'NONE', entropyBits: 0, details: { charset: 0, len: 0 } };
+    if (!pw) return { bars: 0, label: 'none', entropyBits: 0, details: { charset: 0, len: 0 } };
 
     const L = pw.length;
     const has = {
@@ -113,14 +113,14 @@ export function evalPassword(pw) {
 
     // Stricter mapping
     let bars, label;
-    if (bits < 35) { bars = 1; label = 'TOO WEAK!'; }
-    else if (bits < 50) { bars = 2; label = 'WEAK'; }
-    else if (bits < 75) { bars = 3; label = 'MEDIUM'; }
-    else { bars = 4; label = 'STRONG'; }
+    if (bits < 35) { bars = 1; label = 'too_weak'; }
+    else if (bits < 50) { bars = 2; label = 'weak'; }
+    else if (bits < 75) { bars = 3; label = 'medium'; }
+    else { bars = 4; label = 'strong'; }
 
     // Enforce strong requirements: length ≥12 and ≥3 classes
     if (bars === 4 && (L < 12 || classCount < 3)) {
-        bars = 3; label = 'MEDIUM';
+        bars = 3; label = 'medium';
     }
 
     return { bars, label, entropyBits: bits, details: { charset: S, len: L, classes: classCount } };

@@ -3,14 +3,15 @@ import { useMemo, useState, useEffect } from 'react';
 import { Clipboard, ClipboardCheck, ArrowRight } from 'lucide-react';
 import { evalPassword } from '@/helpers/password-helper';
 import { randIndex } from '@/helpers/utils';
+import { useTranslations } from 'next-intl'
 
 import DisplayBox from './DisplayBox';
 import LengthControl from './LengthControl';
 import OptionsGroup from './OptionsGroup';
 import StrengthMeter from './StrengthMeter';
 
-export default function PasswordGenerator() {
-    // UI state
+export default function PasswordGenerator() {    
+    const t = useTranslations('Tool')
     const [length, setLength] = useState(12);
     const [useUpper, setUseUpper] = useState(true);
     const [useLower, setUseLower] = useState(true);
@@ -76,7 +77,7 @@ export default function PasswordGenerator() {
     useEffect(() => { generate(); /* eslint-disable-next-line */ }, []);
 
     return (
-        <div className="grid place-items-center px-4">
+        <div className="grid place-items-center px-4 py-5">
             <div className="w-full max-w-xl">
                 <DisplayBox
                     value={pwd}
@@ -106,13 +107,14 @@ export default function PasswordGenerator() {
 
                     <button
                         onClick={generate}
+                        aria-label={t('generate')}
                         className="w-full inline-flex items-center justify-center gap-2 rounded-md
                             bg-gradient-to-r from-[#c766fc] to-[#575cfa] hover:opacity-95 
                             active:opacity-90 text-white font-semibold px-4 py-3 transition
                             focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 
                             focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
-                            dark:focus-visible:ring-white/40">
-                        GENERATE
+                            dark:focus-visible:ring-white/40 uppercase">
+                        {t('generate')}
                         <ArrowRight />
                     </button>
 

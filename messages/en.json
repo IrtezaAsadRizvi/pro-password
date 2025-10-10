@@ -1,15 +1,23 @@
 {
-    "HomePage": {
-        "helloWorld": "Hello World !"
-    },
-    "AboutPage": {
-        "aboutText": "This is a fully translated static website"
-    },
     "Header": {
-        "home": "Home",
-        "about": "About"
+        "select_language": "Select Language",
+        "toggle_darkmode": "Toggle Darkmode"
     },
-    "LocaleSwitcher": {
-        "locale": "{locale, select, fr {French} en {English} other {Unknown}}"
+    "Tool": {
+        "uppercase_letters": "Uppercase Letters",
+        "lowercase_letters": "Lowercase Letters",
+        "numbers": "Numbers",
+        "symbols": "Symbols",
+        "character_length": "Character Length",
+        "strength": "Strength",
+        "too_weak": "Too Weak!",
+        "weak": "Weak",
+        "medium": "Medium",
+        "strong": "Strong",
+        "none": "None",
+        "generate": "Generate",
+        "refresh_password": "Refresh Password",
+        "copy_password": "Copy Password",
+        "click_copy_password": "Click to copy Password"
     }
 }

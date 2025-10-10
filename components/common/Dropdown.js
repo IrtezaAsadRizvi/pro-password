@@ -1,7 +1,13 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { Tooltip } from 'react-tooltip'
 
-const Dropdown = ({ title = null, items = [], initialValue = null, onSelect }) => {
+const Dropdown = ({ 
+        title = null, 
+        tooltip = null,
+        items = [], 
+        initialValue = null, 
+        onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -21,6 +27,8 @@ const Dropdown = ({ title = null, items = [], initialValue = null, onSelect }) =
     return (
         <div className="relative" ref={dropdownRef}>
             <button className='icon-button'
+                aria-label={tooltip}
+                data-tooltip-id="dropdown-tooltip" data-tooltip-content={tooltip}
                 onClick={() => setIsOpen(!isOpen)}>
                 {title ? (typeof title === 'function' ? title() : title) : (
                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +57,7 @@ const Dropdown = ({ title = null, items = [], initialValue = null, onSelect }) =
                     ))}
                 </ul>
             )}
+            <Tooltip id="dropdown-tooltip" />
         </div>
     );
 };

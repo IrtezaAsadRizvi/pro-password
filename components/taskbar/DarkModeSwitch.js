@@ -2,9 +2,11 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { setEnableDarkmode } from '../../state/uiSlice'
 import { Moon, Sun } from 'lucide-react'
-
+import { Tooltip } from 'react-tooltip'
+import { useTranslations } from 'next-intl'
 
 const DarkModeSwitch = () => {
+    const t = useTranslations('Header')
     const enableDarkmode = useSelector((state) => state.ui.enableDarkmode)
     const dispatch = useDispatch()
     
@@ -14,8 +16,12 @@ const DarkModeSwitch = () => {
     }
     return (
         <button className='icon-button'
+            data-tooltip-id="dropdown-tooltip" 
+            data-tooltip-content={t('toggle_darkmode')}
+            aria-label={t('toggle_darkmode')}
                 onClick={darkModeHandler}>
                     {enableDarkmode ? <Sun/> : <Moon/>}
+                    <Tooltip id="darkmode-tooltip" />
         </button>
     )
 }
