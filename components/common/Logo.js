@@ -1,6 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/propassword_logo_192x192.png"; // static import
+import logo from "@/public/propassword_logo_192x192.webp"; // static import
 
 export default function Logo() {
   return (

@@ -4,12 +4,7 @@ import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import StoreProvider from "@/state/StoreProvider";
-import { DM_Sans } from "next/font/google";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 const LOCALES = ["en", "fr"] as const;
 type Locale = typeof LOCALES[number];
@@ -71,15 +66,11 @@ export default async function RootLayout({ children, params: { locale } }: Props
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale}>
-      <body className={`${dmSans.className}`}>
         <StoreProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navigation />
             {children}
           </NextIntlClientProvider>
         </StoreProvider>
-      </body>
-    </html>
   );
 }
