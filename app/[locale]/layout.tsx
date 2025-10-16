@@ -6,6 +6,10 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import StoreProvider from "@/state/StoreProvider";
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
+
 
 const LOCALES = ["en", "fr"] as const;
 type Locale = typeof LOCALES[number];
