@@ -10,7 +10,7 @@ export default function Logo() {
         priority
         className="w-8 h-8 object-contain" // control the rendered size
       />
-      <span className="font-semibold text-xl">PRO PASSWORD</span>
+      <span className="font-semibold text-xl">ProPassword</span>
     </h1>
   );
 }

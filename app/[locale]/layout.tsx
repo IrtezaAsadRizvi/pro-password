@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Navigation from "@/components/navigation/Navigation";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
@@ -70,6 +71,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navigation />
             {children}
+            <Footer />
           </NextIntlClientProvider>
         </StoreProvider>
   );

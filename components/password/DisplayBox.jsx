@@ -3,19 +3,27 @@ import { useTranslations } from 'next-intl'
 import { Tooltip } from 'react-tooltip'
 
 export default function DisplayBox({ value, onCopy, copiedIcon, generate }) {
-    const t = useTranslations('Tool')
+    const t = useTranslations('Tool')    
+
     return (
-        <div className="flex items-center gap-3 rounded-xl bg-[#f1f1f1] 
+        <div className="flex items-center justify-between gap-3 rounded-xl bg-[#f1f1f1] 
         dark:bg-[#212121] px-4 py-4 shadow-sm">
-            <p  data-tooltip-id="input-tooltip" data-tooltip-content={t('click_copy_password')}
+            <p
+                data-tooltip-id="input-tooltip"
+                data-tooltip-content={t('click_copy_password')}
                 aria-label="Generated password"
-                className="flex-1 bg-transparent !outline-none text-xl font-mono tracking-wide 
-                    text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400
-                    rounded-lg border-none focus:outline-none focus-within:outline-none
-                    focus:border-none focus:shadow-none focus:ring-offset-0 w-fit cursor-pointer"
+                title={value} // show full text on hover
+                className="inline-block max-w-[60vw] overflow-hidden text-ellipsis whitespace-nowrap
+                            bg-transparent text-xl font-mono tracking-wide
+                            text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400
+                            rounded-lg border-none focus:outline-none focus-within:outline-none
+                            focus:border-none focus:shadow-none focus:ring-offset-0 cursor-pointer"
                 style={{ '--tw-ring-shadow': '0 0 #000 !important' }}
                 onClick={onCopy}
-            >{value}</p>
+                >
+                {value}
+                </p>
+
             <div className="flex">
                 <button
                     onClick={onCopy}
