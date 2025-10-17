@@ -10,6 +10,10 @@
       "region": "us-east1"
     },
     "cleanUrls": true,    
+    "redirects": [
+      { "source": "/en", "destination": "/", "type": 301 },
+      { "source": "/en/", "destination": "/", "type": 301 }
+    ],
     "headers": [
       {
         "source": "**/*.@(js|css|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)",

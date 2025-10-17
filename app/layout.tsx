@@ -1,3 +1,4 @@
+// app/layout.tsx
 import { ReactNode } from "react";
 import { DM_Sans } from "next/font/google";
 import Script from "next/script";
@@ -6,71 +7,110 @@ import GAClient from "./ga-client";
 import "./globals.css";
 import "react-tooltip/dist/react-tooltip.css";
 
+import { NextIntlClientProvider } from "next-intl";
+import StoreProvider from "@/state/StoreProvider";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+
 const dmSans = DM_Sans({
-    subsets: ["latin"],
-    weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const LOCALES = ["en", "fr"] as const;
-type Locale = (typeof LOCALES)[number];
-
-type Props = {
-    children: ReactNode;
-    params: { locale: Locale };
+export const metadata = {
+  metadataBase: new URL("https://propassword.web.app"),
+  title: "ProPassword – Free Secure Password Generator",
+  description: "Create strong, unique passwords instantly. 100% Free.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      fr: "/fr",
+      "x-default": "/",
+    },
+  },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    url: "https://propassword.web.app",
+    title: "ProPassword – Free Secure Password Generator",
+    description: "Create strong, unique passwords instantly. 100% Free.",
+    siteName: "ProPassword",
+    images: [{ url: "/og/og-cover.png", width: 1200, height: 630, alt: "ProPassword" }],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourhandle",
+    title: "ProPassword – Free Secure Password Generator",
+    description: "Create strong, unique passwords instantly. 100% Free.",
+    images: ["/og/og-cover.png"],
+  },
 };
 
-export default function RootLayout({ children, params: { locale } }: Props) {
-    const base = "https://propassword.web.app";
-    const canon = `${base}/${locale}`;
+async function getEnMessages() {
+  return (await import("../messages/en.json")).default;
+}
 
-    return (
-        <html lang={locale} className={dmSans.className}>
-            <head>
-                <link rel="canonical" href={canon} />
-                <link rel="alternate" hrefLang="en" href={`${base}/en`} />
-                <link rel="alternate" hrefLang="fr" href={`${base}/fr`} />
-                <link rel="alternate" hrefLang="x-default" href={`${base}/en`} />
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const base = "https://propassword.web.app";
+  const messages = await getEnMessages();
 
-                <Script id="enable-preloaded-css" strategy="beforeInteractive">
-                    {`
-                        (function () {
-                        var links = document.querySelectorAll('link[data-preload-css]');
-                        links.forEach(function (l) {
-                            // If already loaded from cache, CSSStyleSheet may be present.
-                            // We still attach a one-time load just in case.
-                            function enable(){ try{ l.media='all'; }catch(e){} }
-                            if (l.sheet) { enable(); }
-                            l.addEventListener('load', enable, { once: true });
-                        });
-                        })();
-                    `}
-                </Script>
+  return (
+    <html lang="en" className={dmSans.className}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="IbnfDAx_WMPPDWP_UAiB2ZNnjyu1oFcBOqfTqJ-qT64"
+        />
 
-                {/* <noscript>
-                    {cssLinks.map(({ href }) => (
-                        <link key={`ns-${href}`} rel="stylesheet" href={href} />
-                    ))}
-                </noscript> */}
+        {/* Canonical + hreflang for English root and French */}
+        <link rel="canonical" href={`${base}/`} />
+        <link rel="alternate" hrefLang="en" href={`${base}/`} />
+        <link rel="alternate" hrefLang="fr" href={`${base}/fr`} />
+        <link rel="alternate" hrefLang="x-default" href={`${base}/`} />
 
-                <>
-                    <Script src={`https://www.googletagmanager.com/gtag/js?id=${'G-DKNSWQG2L3'}`} strategy="afterInteractive" />
-                    <Script id="ga-init" strategy="afterInteractive">
-                    {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', '${'G-DKNSWQG2L3'}', {
-                        anonymize_ip: true,
-                        send_page_view: false
-                        });
-                    `}
-                    </Script>
-                </>
-            </head>
-            <body>
-                {children}
-                <GAClient />
-            </body>
-        </html>
-    );
+        {/* Enable preloaded CSS (kept from your original) */}
+        <Script id="enable-preloaded-css" strategy="afterInteractive">
+          {`
+            (function () {
+              var links = document.querySelectorAll('link[data-preload-css]');
+              links.forEach(function (l) {
+                function enable(){ try{ l.media='all'; }catch(e){} }
+                if (l.sheet) { enable(); }
+                l.addEventListener('load', enable, { once: true });
+              });
+            })();
+          `}
+        </Script>
+
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${"G-DKNSWQG2L3"}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${"G-DKNSWQG2L3"}', {
+              anonymize_ip: true,
+              send_page_view: false
+            });
+          `}
+        </Script>
+      </head>
+      <body>
+        <StoreProvider>
+          <NextIntlClientProvider locale="en" messages={messages}>
+            <Navigation />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
+        </StoreProvider>
+        <GAClient />
+      </body>
+    </html>
+  );
 }
