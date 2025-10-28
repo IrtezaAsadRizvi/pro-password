@@ -52,19 +52,22 @@ export default function PasswordUsps() {
     return (
         <section className="w-full py-16 md:py-32 bg-[#f1f1f1] dark:bg-[#212121]">
             <div className="mx-auto max-w-[1400px] px-6 text-zinc-900 dark:text-zinc-100">
-                <h2 className="mb-16 text-center text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
+                <h2 className="mb-16 text-center text-3xl lg:text-4xl font-semibold tracking-tight 
+                    text-gray-900 dark:text-gray-100 sm:text-5xl">
                     Take your security to the next level
                 </h2>
 
                 <div className="mt-12 grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
                     {items.map((item) => (
-                        <article key={item.title} className="flex flex-col">
-                            {item.icon && <div className="mb-6" aria-hidden="true">{item.icon}</div>}
+                        <article key={item.title} className="flex md:flex-col gap-5 md:gap-6">
+                            {item.icon && <div aria-hidden="true">{item.icon}</div>}
 
-                            <h3 className="text-xl font-semibold md:min-h-[56px]">{item.title}</h3>
+                            <div>
+                                <h3 className="text-xl font-semibold md:min-h-[56px]">{item.title}</h3>
 
-                            <div className="mt-3 space-y-3 text-base leading-7 text-gray-700 dark:text-gray-300">
-                                <p>{item.body}</p>
+                                <div className="mt-3 space-y-3 text-base leading-7 text-gray-700 dark:text-gray-300">
+                                    <p>{item.body}</p>
+                                </div>
                             </div>
 
                             {/* Optional CTA: render as link if you have the route */}

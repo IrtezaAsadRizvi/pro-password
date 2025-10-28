@@ -115,7 +115,7 @@ export default function PasswordGenerator() {
     useEffect(() => { generate(); /* eslint-disable-next-line */ }, []);
 
     return (
-        <div className="grid place-items-center px-4 py-5">
+        <div className="grid place-items-center md:px-4 py-5">
             <div className="w-full max-w-xl">
                 <DisplayBox
                     value={pwd}
