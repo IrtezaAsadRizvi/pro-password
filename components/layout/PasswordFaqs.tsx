@@ -88,6 +88,77 @@ export default function PasswordFaqs({
             ),
             aText: t('faq5_aText'),
         },
+        {
+            q: t('faq6_q'),
+            a: (
+                <>
+                    <p>{t('faq6_a_p1')}</p>
+                    <p>{t('faq6_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq6_aText'),
+        },
+        {
+            q: t('faq7_q'),
+            a: (
+                <>
+                    <p>{t('faq7_a_p1')}</p>
+                    <p>{t('faq7_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq7_aText'),
+        },
+        {
+            q: t('faq8_q'),
+            a: (
+                <>
+                    <p>{t('faq8_a_p1')}</p>
+                    <p>{t('faq8_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq8_aText'),
+        },
+        {
+            q: t('faq9_q'),
+            a: (
+                <>
+                    <p>{t('faq9_a_p1')}</p>
+                    <p>{t('faq9_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq9_aText'),
+        },
+        {
+            q: t('faq10_q'),
+            a: (
+                <>
+                    <p>{t('faq10_a_p1')}</p>
+                    <p>{t('faq10_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq10_aText'),
+        },
+        {
+            q: t('faq11_q'),
+            a: (
+                <>
+                    <p>{t('faq11_a_p1')}</p>
+                    <p>{t('faq11_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq11_aText'),
+        },
+        {
+            q: t('faq12_q'),
+            a: (
+                <>
+                    <p>{t('faq12_a_p1')}</p>
+                    <p>{t('faq12_a_p2')}</p>
+                </>
+            ),
+            aText: t('faq12_aText'),
+        },
+
     ];
 
     const jsonLd = {
@@ -104,7 +175,8 @@ export default function PasswordFaqs({
         <div className="bg-white dark:bg-neutral-950">
             <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
                 <div className="mx-auto max-w-4xl">
-                    <h2 className="text-center text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
+                    <h2 className="mb-16 text-center text-3xl lg:text-4xl font-semibold tracking-tight 
+                    text-gray-900 dark:text-gray-100 sm:text-5xl">
                         {t(titleKey.replace('Faqs.', ''))}
                     </h2>
 

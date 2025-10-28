@@ -1,5 +1,4 @@
-"use client"
-import Logo from "../common/Logo"
+"use client" 
 import PasswordGenerator from "@/components/password/PasswordGenerator";
 import { useTranslations } from "next-intl";
 
@@ -12,7 +11,7 @@ const Hero = () => {
                     <h1 className="mb-8 text-3xl md:text-4xl lg:text-6xl font-semibold 
                         tracking-tight text-gray-900 dark:text-gray-100  max-w-2xl text-center 
                         lg:text-start">{t('title')}</h1>
-                    <p className="text-lg md:text-xl !leading-[150%] tracking-[-0.02em] font-medium 
+                    <p className="text-lg md:text-xl !leading-[150%] tracking-[-0.02em]  
                         [&_a]:px-px [&_a]:transition-all [&_a]:text-secure-blue [&_a]:border-2 
                         [&_a]:border-transparent [&_a]:rounded [&_a]:underline hover:[&_a]:text-secure-blue 
                         hover:[&_a]:no-underline focus:[&_a]:text-secure-blue focus:[&_a]:outline-none 
