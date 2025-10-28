@@ -27,6 +27,7 @@
           { "key": "Cache-Control", "value": "public,max-age=60" }
         ]
       }
-    ]
+    ],
+    "rewrites": [ { "source": "**", "destination": "/index.html" } ]
   }
 }

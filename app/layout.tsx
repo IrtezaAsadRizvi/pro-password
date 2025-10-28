@@ -65,7 +65,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 />
 
                 {/* Canonical + hreflang for English root and French */}
-                <link rel="canonical" href={`${base}/`} />
                 <link rel="alternate" hrefLang="en" href={`${base}/`} />
                 <link rel="alternate" hrefLang="fr" href={`${base}/fr`} />
                 <link rel="alternate" hrefLang="x-default" href={`${base}/`} />
