@@ -17,6 +17,11 @@ export default function PasswordGenerator() {
     const [useLower, setUseLower] = useState(true);
     const [useNumber, setUseNumber] = useState(true);
     const [useSymbol, setUseSymbol] = useState(false);
+
+    // NEW: phrase option
+    const [usePhrase, setUsePhrase] = useState(false);
+    const [phrase, setPhrase] = useState('');
+
     const [pwd, setPwd] = useState('');
     const [copied, setCopied] = useState(false);
 
@@ -44,25 +49,58 @@ export default function PasswordGenerator() {
         if (!pool.length || length < 4) {
             if (!pool.length) return setPwd('');
         }
+
+        // --- phrase handling ---
+        // 1) Trim and collapse internal spaces -> example: "sweet pillow" => "sweetpillow"
+        const raw = (phrase || '').trim().replace(/\s+/g, '');
+        const maxPhraseLen = Math.floor(length / 2);
+        const phraseSlice = usePhrase && raw.length > 0
+            ? raw.slice(0, maxPhraseLen)
+            : '';
+        const phraseLen = phraseSlice.length;
+
+        // remaining length for random generation
+        let remaining = Math.max(0, length - phraseLen);
+
+        // --- picks for non-phrase part ---
         const picks = [];
 
-        // ensure at least one from each selected set
+        // ensure at least one from each selected set (best-effort if remaining is small)
         const sets = [];
         if (useUpper) sets.push(UPP);
         if (useLower) sets.push(LOW);
         if (useNumber) sets.push(NUM);
         if (useSymbol) sets.push(SYM);
-        sets.forEach(set => picks.push(set[randIndex(set.length)]));
 
-        // fill remaining
-        while (picks.length < length) picks.push(pool[randIndex(pool.length)]);
+        // take one from as many sets as possible within remaining
+        for (let i = 0; i < sets.length && picks.length < remaining; i++) {
+            const set = sets[i];
+            picks.push(set[randIndex(set.length)]);
+        }
 
-        // shuffle
+        // fill remaining with full pool
+        while (picks.length < remaining) picks.push(pool[randIndex(pool.length)]);
+
+        // shuffle ONLY the non-phrase random part to keep phrase contiguous
         for (let i = picks.length - 1; i > 0; i--) {
             const j = randIndex(i + 1);
             [picks[i], picks[j]] = [picks[j], picks[i]];
         }
-        setPwd(picks.join(''));
+
+        // insert phrase slice at a random position
+        let finalArr;
+        if (phraseLen > 0) {
+            const insertAt = randIndex(picks.length + 1); // 0..picks.length
+            finalArr = [
+                ...picks.slice(0, insertAt),
+                ...phraseSlice.split(''),
+                ...picks.slice(insertAt),
+            ];
+        } else {
+            finalArr = picks;
+        }
+
+        setPwd(finalArr.join(''));
         setCopied(false);
     }
 
@@ -97,6 +135,10 @@ export default function PasswordGenerator() {
                         useLower={useLower} setUseLower={setUseLower}
                         useNumber={useNumber} setUseNumber={setUseNumber}
                         useSymbol={useSymbol} setUseSymbol={setUseSymbol}
+
+                        // NEW props for phrase
+                        usePhrase={usePhrase} setUsePhrase={setUsePhrase}
+                        phrase={phrase} setPhrase={setPhrase}
                     />
 
                     <StrengthMeter

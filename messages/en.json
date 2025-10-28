@@ -3,11 +3,56 @@
         "select_language": "Select Language",
         "toggle_darkmode": "Toggle Darkmode"
     },
+    "Landing": {
+        "title": "Free Password Generator — Create Strong, Secure Passwords Instantly",
+        "subtitle": "One click to a strong, random password—free, private, and fast",
+        "usp_1_title": "Zero-knowledge password security",
+        "usp_1_text": "Keep your passwords private—even from us. Local-only encryption protects your vault with end-to-end privacy.",
+        "usp_2_title": "Stay alert to digital threats",
+        "usp_2_text": "Get warned if your email or credentials appear online so you can act fast and prevent identity theft.",
+        "usp_3_title": "Build stronger password habits",
+        "usp_3_text": "Find weak or reused passwords and replace them with unique, strong ones using the built-in generator.",
+        "usp_4_title": "Stronger logins with multifactor",
+        "usp_4_text": "Add MFA—one-time codes, biometrics, or apps—to block attackers and boost account security."
+    },
+    "Faqs": {
+        "title": "Frequently asked questions",
+
+        "vault_label": "vault",
+        "encrypted_label": "encrypted",
+
+        "faq1_q": "How does the password generator work?",
+        "faq1_a_p1": "The generator creates random passwords based on your choices: length, ease of reading, and whether to include uppercase, lowercase, numbers, and symbols.",
+        "faq1_a_p2": "Each result is checked with the widely used <em>zxcvbn</em> library to estimate strength.",
+        "faq1_aText": "The generator creates random passwords from your chosen options. Each result is checked with the zxcvbn library to estimate strength.",
+
+        "faq2_q": "How do I create a strong password?",
+        "faq2_a_p1": "Keep it unique and long. Aim for 15+ characters with a mix of letters, numbers, and symbols. Avoid common words and personal info.",
+        "faq2_a_p2": "The built-in generator makes a fresh, complex password every time—great for new accounts or replacing weak ones.",
+        "faq2_aText": "Use 15+ characters with letters, numbers, and symbols. Avoid common words and personal info. The generator creates strong, unique passwords.",
+
+        "faq3_q": "Can a strong password be hacked?",
+        "faq3_a_p1": "In theory yes, but a strong 12+ character password can take an extremely long time to crack with current methods. Some estimates show crack times in the <a>thousands of years</a>.",
+        "faq3_aText": "In theory yes, but a strong 12+ character password can take an extremely long time to crack with current methods.",
+
+        "faq4_q": "Is your password generator safe?",
+        "faq4_a_p1_before": "Yes. Passwords are created randomly from your options and checked for strength. If you save them in your",
+        "faq4_a_p1_mid": ", they’re",
+        "faq4_a_p1_after": " so only you can read them.",
+        "faq4_aText": "Yes. Passwords are generated locally and can be stored encrypted in your vault so only you can read them.",
+
+        "faq5_q": "Is the password stored in your system?",
+        "faq5_a_p1": "No. This tool runs fully in your browser. We don’t send or store your password on any server.",
+        "faq5_a_p2": "Generation and strength checks happen on your device. Copy and save it where you prefer, and clear your clipboard on shared machines.",
+        "faq5_aText": "No. Everything runs in your browser; nothing is sent or stored on our servers. Clear your clipboard on shared devices."
+    },
     "Tool": {
         "uppercase_letters": "Uppercase Letters",
         "lowercase_letters": "Lowercase Letters",
         "numbers": "Numbers",
         "symbols": "Symbols",
+        "phrase": "Phrase",
+        "phrase_placeholder": "Any special or memorable word",
         "character_length": "Character Length",
         "strength": "Strength",
         "too_weak": "Too Weak!",

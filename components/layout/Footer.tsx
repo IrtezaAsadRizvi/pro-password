@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
                     href="https://buymeacoffee.com/irtezaasad"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 hover:underline font-semibold text-[#9261fb]"
+                    className="inline-flex items-center gap-2 hover:underline font-semibold text-primary-text"
                     aria-label="Buy me a coffee"
                     title="Buy me a coffee"
                 >

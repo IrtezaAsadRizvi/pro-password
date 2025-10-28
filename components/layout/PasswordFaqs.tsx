@@ -1,104 +1,97 @@
-// app/components/PasswordFaqs.tsx  (server component)
+'use client'
 import React from "react";
+import { useTranslations } from "next-intl";
 
-type Faq = { q: string; a: React.ReactNode; aText: string };
-
-const faqs: Faq[] = [
-    {
-        q: "How does the password generator work?",
-        a: (
-            <>
-                <p>
-                    The generator creates random passwords based on your choices—length,
-                    easy-to-say/read, and whether to include uppercase, lowercase, numbers, and symbols.
-                </p>
-                <p>Each result is checked with the widely used <em>zxcvbn</em> library to estimate strength.</p>
-            </>
-        ),
-        aText:
-            "The generator creates random passwords from your chosen options. Each result is checked with the zxcvbn library to estimate strength.",
-    },
-    {
-        q: "How do I create a strong password?",
-        a: (
-            <>
-                <p>
-                    Keep it unique and long—aim for 15+ characters with a mix of letters, numbers, and symbols. Avoid common
-                    words and personal info.
-                </p>
-                <p>
-                    The built-in generator makes a fresh, complex password every time—great for new accounts or replacing weak
-                    ones.
-                </p>
-            </>
-        ),
-        aText:
-            "Use 15+ characters with letters, numbers, and symbols. Avoid common words and personal info. The generator creates strong, unique passwords.",
-    },
-    {
-        q: "Can a strong password be hacked?",
-        a: (
-            <p>
-                Theoretically yes; practically not for a very long time. A 12-char password with numbers, letters, and symbols
-                can push crack times into{" "}
-                <a
-                    href="https://www.hivesystems.io/blog/are-your-passwords-in-the-green"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline hover:no-underline"
-                >
-                    thousands of years
-                </a>
-                .
-            </p>
-        ),
-        aText:
-            "In theory yes, but a strong 12+ character password can take an extremely long time to crack with current methods.",
-    },
-    {
-        q: "Is your password generator safe?",
-        a: (
-            <>
-                <p>
-                    Yes. Passwords are created randomly from your options and checked with zxcvbn for strength. If you save them
-                    in your{" "}
-                    <a href="/features/password-vault" className="underline hover:no-underline">
-                        vault
-                    </a>
-                    , they’re{" "}
-                    <a href="/security/zero-knowledge-security" className="underline hover:no-underline">
-                        encrypted
-                    </a>{" "}
-                    so only you can read them.
-                </p>
-            </>
-        ),
-        aText:
-            "Yes. Passwords are generated locally and can be stored encrypted in your vault so only you can read them.",
-    },
-    {
-        q: "Is the password stored in your system?",
-        a: (
-            <>
-                <p>No. This tool runs fully in your browser. We don’t send or store your password on any server.</p>
-                <p>
-                    Generation and strength checks happen in-memory on your device. Copy and save it where you prefer, and clear
-                    your clipboard if you’re on a shared machine.
-                </p>
-            </>
-        ),
-        aText:
-            "No. Everything runs in your browser; nothing is sent or stored on our servers. Clear your clipboard on shared devices.",
-    },
-];
-
-export default function PasswordFaqs({
-    title = "Frequently asked questions",
-    openFirst = true,
-}: {
-    title?: string;
+type Props = {
+    titleKey?: string;   // optional: override title key if you want
     openFirst?: boolean;
-}) {
+};
+
+export default async function PasswordFaqs({
+    titleKey = "Faqs.title",
+    openFirst = true,
+}: Props) {
+    const t = useTranslations('Faqs')
+
+    const faqs = [
+        {
+            q: t("faq1_q"),
+            a: (
+                <>
+                    <p>
+                        {t("faq1_a_p1")}
+                    </p>
+                    <p>
+                        {t.rich("faq1_a_p2", {
+                            em: (chunks: any) => <em>{chunks}</em>,
+                        })}
+                    </p>
+                </>
+            ),
+            aText: t("faq1_aText"),
+        },
+        {
+            q: t("faq2_q"),
+            a: (
+                <>
+                    <p>{t("faq2_a_p1")}</p>
+                    <p>{t("faq2_a_p2")}</p>
+                </>
+            ),
+            aText: t("faq2_aText"),
+        },
+        {
+            q: t("faq3_q"),
+            a: (
+                <p>
+                    {t.rich("faq3_a_p1", {
+                        a: (chunks) => (
+                            <a
+                                href="https://www.hivesystems.io/blog/are-your-passwords-in-the-green"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline hover:no-underline"
+                            >
+                                {chunks}
+                            </a>
+                        ),
+                    })}
+                </p>
+            ),
+            aText: t("faq3_aText"),
+        },
+        {
+            q: t("faq4_q"),
+            a: (
+                <>
+                    <p>
+                        {t("faq4_a_p1_before")}
+                        {" "}
+                        <a href="/features/password-vault" className="underline hover:no-underline">
+                            {t("vault_label")}
+                        </a>
+                        {t("faq4_a_p1_mid")}
+                        <a href="/security/zero-knowledge-security" className="underline hover:no-underline">
+                            {t("encrypted_label")}
+                        </a>
+                        {t("faq4_a_p1_after")}
+                    </p>
+                </>
+            ),
+            aText: t("faq4_aText"),
+        },
+        {
+            q: t("faq5_q"),
+            a: (
+                <>
+                    <p>{t("faq5_a_p1")}</p>
+                    <p>{t("faq5_a_p2")}</p>
+                </>
+            ),
+            aText: t("faq5_aText"),
+        },
+    ];
+
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -114,7 +107,7 @@ export default function PasswordFaqs({
             <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
                 <div className="mx-auto max-w-4xl">
                     <h2 className="text-center text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
-                        {title}
+                        {t(titleKey.replace("Faqs.", ""))}
                     </h2>
 
                     <dl className="mt-16 divide-y divide-gray-900/10 dark:divide-white/10">

@@ -11,7 +11,7 @@ export default function LengthControl({ length, onChange, min = 4, max = 64 }) {
                 <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                     {t('character_length')}
                 </label>
-                <span className="text-[#9261fb] dark:text-[#c666fc] font-semibold tabular-nums">
+                <span className="text-primary-text dark:text-[#c666fc] font-semibold tabular-nums">
                     {length}
                 </span>
             </div>
