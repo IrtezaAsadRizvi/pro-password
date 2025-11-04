@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         title: "ProPassword – Free Secure Password Generator",
         description: "Create strong, unique passwords instantly. 100% Free.",
         siteName: "ProPassword",
-        images: [{ url: "/og/og-cover.png", width: 1200, height: 630, alt: "ProPassword" }],
+        images: [{ url: "https://propassword.web.app/propassword_og.png", width: 1200, height: 630, alt: "ProPassword" }],
         locale: "fr_FR",
     },
     twitter: {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         site: "@yourhandle",
         title: "ProPassword – Free Secure Password Generator",
         description: "Create strong, unique passwords instantly. 100% Free.",
-        images: ["/og/og-cover.png"],
+        images: ["https://propassword.web.app/propassword_og.png"],
     },
 };
 
