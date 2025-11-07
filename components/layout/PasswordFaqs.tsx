@@ -176,7 +176,7 @@ export default function PasswordFaqs({
             <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
                 <div className="mx-auto max-w-4xl">
                     <h2 className="mb-16 text-center text-3xl lg:text-4xl font-semibold tracking-tight 
-                    text-gray-900 dark:text-gray-100 sm:text-5xl">
+                    text-gray-900 dark:text-gray-100 dark:text-gray-100 sm:text-5xl">
                         {t(titleKey.replace('Faqs.', ''))}
                     </h2>
 
@@ -187,9 +187,9 @@ export default function PasswordFaqs({
                                     className="group"
                                     {...(openFirst && i === 0 ? { open: true } : {})}
                                 >
-                                    <summary className="flex w-full list-none cursor-pointer items-start justify-between text-left text-gray-900 dark:text-gray-100">
+                                    <summary className="flex w-full list-none cursor-pointer items-start justify-between text-left text-gray-900 dark:text-gray-100 dark:text-gray-100">
                                         <span className="text-xl font-semibold">{faq.q}</span>
-                                        <span aria-hidden className="ml-6 h-7 select-none text-gray-700 dark:text-gray-300">
+                                        <span aria-hidden className="ml-6 h-7 select-none text-gray-700 dark:text-gray-300 dark:text-gray-300">
                                             <span className="group-open:hidden text-2xl leading-none">＋</span>
                                             <span className="hidden group-open:inline text-2xl leading-none">−</span>
                                         </span>
